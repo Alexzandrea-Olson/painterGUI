@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.*?>
+
+<BorderPane prefHeight="480.0" prefWidth="640.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="PainterController">
+  <center>
+    <Pane fx:id="drawingAreaPane" onMouseDragged="#drawingAreaMouseDragged" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER" />
+  </center>
+  <left>
+    <VBox maxHeight="1.7976931348623157E308" spacing="8.0" BorderPane.alignment="CENTER">
+      <children>
+        <TitledPane text="Drawing Color">
+          <content>
+            <VBox spacing="8.0">
+              <children>
+                <GridPane>
+                  <children>
+                    <TextField editable="false" prefWidth="200.0" text="Red" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                    <Slider fx:id="redSlider" blockIncrement="1.0" majorTickUnit="1.0" max="255.0" minorTickCount="1" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                    <TextField editable="false" prefWidth="200.0" text="Green" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                    <Slider fx:id="greenSlider" blockIncrement="1.0" majorTickUnit="1.0" max="255.0" minorTickCount="1" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                    <TextField editable="false" prefWidth="200.0" text="Blue" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                    <Slider fx:id="blueSlider" blockIncrement="1.0" majorTickUnit="1.0" max="255.0" minorTickCount="1" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                    <TextField editable="false" prefWidth="200.0" text="Alpha" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                    <Slider fx:id="alphaSlider" blockIncrement="0.1" majorTickUnit="0.1" max="1.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                    <TextField fx:id="redTextField" editable="false" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                    <TextField fx:id="greenTextField" editable="false" prefHeight="27.0" prefWidth="44.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                    <TextField fx:id="blueTextField" editable="false" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                    <TextField fx:id="alphaTextField" editable="false" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  </children>
+                  <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="99.0" minWidth="10.0" prefWidth="55.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="131.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="44.0" />
+                  </columnConstraints>
+                  <rowConstraints>
+                    <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  </rowConstraints>
+                </GridPane>
+              </children>
+            </VBox>
+          </content>
+        </TitledPane>
+        <TitledPane text="Pen Size">
+          <content>
+            <VBox spacing="8.0">
+              <children>
+                <RadioButton fx:id="smallRadioButton" mnemonicParsing="false" onAction="#sizeRadioButtonSelected" text="Small">
+                  <toggleGroup>
+                    <ToggleGroup fx:id="sizeToggleGroup" />
+                  </toggleGroup>
+                </RadioButton>
+                <RadioButton fx:id="mediumRadioButton" mnemonicParsing="false" onAction="#sizeRadioButtonSelected" selected="true" text="Medium" toggleGroup="$sizeToggleGroup" />
+                <RadioButton fx:id="largeRadioButton" mnemonicParsing="false" onAction="#sizeRadioButtonSelected" text="Large" toggleGroup="$sizeToggleGroup" />
+              </children>
+            </VBox>
+          </content>
+        </TitledPane>
+        <Button fx:id="undoButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#undoButtonPressed" text="Undo" />
+        <Button fx:id="clearButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#clearButtonPressed" text="Clear" />
+      </children>
+      <BorderPane.margin>
+        <Insets right="8.0" />
+      </BorderPane.margin>
+    </VBox>
+  </left>
+  <padding>
+    <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+  </padding>
+</BorderPane>
